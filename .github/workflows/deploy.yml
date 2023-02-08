@@ -23,6 +23,17 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Install Dependencies
+        run: |
+          npm ci
+          npm run build
+
+      - name: Move dist.
+        run: mv ./dist ./public/dist
+
+      - name: Deploy Directories
+        run: ls -al
+
       - name: SSH key generate
         run: |
           mkdir -p ~/.ssh/
