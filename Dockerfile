@@ -13,7 +13,8 @@ FROM nginx:1-alpine
 ARG WORKDIR=/var/www/app
 WORKDIR $WORKDIR
 
-COPY --from=builder ${WORKDIR}/dist ${WORKDIR}/dist
+COPY --from=builder ${WORKDIR}/dist ${WORKDIR}/public/dist
+COPY --from=builder ${WORKDIR}/public ${WORKDIR}/public
 COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80 443
