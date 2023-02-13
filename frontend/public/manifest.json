@@ -1,0 +1,48 @@
+{
+  "background_color": "#FFFFFF",
+  "categories": [
+    "pwa",
+    "sample"
+  ],
+  "description": "PWA Sample 用ページです。",
+  "display": "standalone",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "icons": [
+    {
+      "src": "labo-round-icon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "labo-round-icon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "labo-round-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "id": "?sampleId",
+  "name": "PWA Sample",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "protocol_handlers": [],
+  "related_applications": [],
+  "scope": "/",
+  "screenshots": [],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "referrer": "from",
+      "tag": "token"
+    }
+  },
+  "short_name": "PWA",
+  "shortcuts": [],
+  "start_url": "/",
+  "theme_color": "#000000"
+}
