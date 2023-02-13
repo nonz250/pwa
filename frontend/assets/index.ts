@@ -1,5 +1,5 @@
 console.log(
-  "%c This is pwa sample page for nonz250 learn.",
+  "%cThis is pwa sample page for nonz250 learn.",
   "padding: 0.2rem; border-radius: 5px; color: white; background-color: #3d50b7;",
 )
 
