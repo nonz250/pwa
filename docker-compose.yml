@@ -9,5 +9,5 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./frontend/public:/var/www/app/public:delegated
       - ./frontend/dist:/var/www/app/public/dist:delegated
+      - ./frontend/public:/var/www/app/public:delegated
