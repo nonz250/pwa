@@ -25,4 +25,9 @@ window.onload = async () => {
   } catch (error) {
     console.error(error)
   }
+
+  document.getElementById('notification').addEventListener('click', async () => {
+    const permission = await Notification.requestPermission()
+    console.log(permission)
+  })
 }
