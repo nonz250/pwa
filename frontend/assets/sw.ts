@@ -1,6 +1,3 @@
-export default null
-declare var self: ServiceWorkerGlobalScope
-
 const notificationBody = {
   body: 'PWA Sample notification.',
   icon: '/labo-round-icon-192x192.png'
