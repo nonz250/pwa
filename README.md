@@ -16,3 +16,18 @@ https://pwa.nozomi.bike
 を実装しています。
 
 そのうちオフラインで動作する簡単なアプリケーションにしていく予定。
+
+## Development
+
+### Build & Docker 起動
+
+```bash
+make
+```
+
+### TypeScript トランスパイル
+
+```bash
+cd frontend
+npm run watch
+```
