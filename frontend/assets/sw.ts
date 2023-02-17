@@ -1,9 +1,9 @@
-const notificationBody = {
+const NOTIFICATION_BODY = {
   body: 'PWA Sample notification.',
   icon: '/labo-round-icon-192x192.png'
 }
 
-const CACHE_VERSION = 1
+const CACHE_VERSION = new Date().getSeconds().toString()
 const CACHE_NAME = `pwa-sample-cache-v${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
@@ -26,32 +26,30 @@ self.addEventListener('activate', (event) => {
   console.log('activate', event)
 
   const notificationActivate = async (): Promise<void> => {
+    console.log('notification permission is', Notification.permission)
     if (Notification.permission === 'granted') {
-      await self.registration.showNotification('New PWA Sample activate.', notificationBody)
+      await self.registration.showNotification('New PWA Sample activate.', NOTIFICATION_BODY)
     }
   }
 
   const updateCaches = async (): Promise<void> => {
     // @see https://developer.mozilla.org/ja/docs/Web/API/Cache
     const expectedCacheNamesSet = new Set(Object.values(CURRENT_CACHES))
-    void caches.keys().then(async (cacheNames) =>
-      await Promise.all(
-        cacheNames.map(async (cacheName): Promise<Promise<boolean> | Promise<void>> => {
-          if (!expectedCacheNamesSet.has(cacheName)) {
-            console.log(`Update caches ${cacheName} to ${CACHE_NAME}`)
-            return await caches.delete(cacheName)
-          }
-        })
-      )
+    const cacheNames = await caches.keys()
+    await Promise.all(
+      cacheNames.map(async (cacheName): Promise<Promise<boolean> | Promise<void>> => {
+        if (!expectedCacheNamesSet.has(cacheName)) {
+          console.log(`Update caches ${cacheName} to ${CACHE_NAME}`)
+          return await caches.delete(cacheName)
+        }
+      })
     )
   }
 
-  const activate = async (): Promise<void> => {
+  event.waitUntil((async () => {
     await updateCaches()
-    await notificationActivate()
-  }
-
-  void activate()
+    void notificationActivate()
+  })())
 })
 
 self.addEventListener('sync', (event) => {
@@ -69,7 +67,9 @@ self.addEventListener('offline', (event) => {
 
 self.addEventListener('push', (event) => {
   console.log('push', event)
-  if (event.data !== null) {
-    void self.registration.showNotification(event.data.text(), notificationBody)
-  }
+  event.waitUntil((async () => {
+    if (event.data !== null) {
+      await self.registration.showNotification(event.data.text(), NOTIFICATION_BODY)
+    }
+  })())
 })
