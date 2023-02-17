@@ -1,4 +1,6 @@
-# pwa
+# pwa 
+
+![](https://github.com/nonz250/pwa/actions/workflows/deploy.yml/badge.svg)
 
 https://pwa.nozomi.bike
 
