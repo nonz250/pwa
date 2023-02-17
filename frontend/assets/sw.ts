@@ -3,12 +3,12 @@ const NOTIFICATION_BODY = {
   icon: '/labo-round-icon-192x192.png'
 }
 
-const CACHE_VERSION = Math.floor(Math.random() * 100)
+const CACHE_VERSION = 1
 const CACHE_NAME = `pwa-sample-cache-v${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
 }
-const MAIN_CACHES = [
+const MAIN_CACHES: string[] = [
   '/',
   '/dist/index.js'
 ]
@@ -58,11 +58,19 @@ self.addEventListener('sync', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.log('fetch', event)
-  console.log(navigator.onLine)
-})
+  event.respondWith((async () => {
+    const cacheResponse = await caches.match(event.request)
+    if (cacheResponse !== null && cacheResponse !== undefined) {
+      console.log('Cache resource:', event.request.url)
+      return cacheResponse
+    }
 
-self.addEventListener('offline', (event) => {
-  console.log('offline', event)
+    console.log('Server resource:', event.request.url)
+    const response = await fetch(event.request)
+    const cache = await caches.open(CACHE_NAME)
+    await cache.put(event.request, response.clone())
+    return response
+  })())
 })
 
 self.addEventListener('push', (event) => {
