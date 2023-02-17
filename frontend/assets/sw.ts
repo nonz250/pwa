@@ -3,7 +3,7 @@ const NOTIFICATION_BODY = {
   icon: '/labo-round-icon-192x192.png'
 }
 
-const CACHE_VERSION = new Date().getSeconds().toString()
+const CACHE_VERSION = Math.floor(Math.random() * 100)
 const CACHE_NAME = `pwa-sample-cache-v${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
