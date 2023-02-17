@@ -16,7 +16,7 @@ window.onload = async () => {
   try {
     const registration = await navigator
       .serviceWorker
-      .register('/dist/sw.js')
+      .register('/sw.js')
     await registration.update()
   } catch (error) {
     console.error(error)

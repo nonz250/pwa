@@ -29,7 +29,9 @@ jobs:
           npm run build
 
       - name: Move dist.
-        run: mv ./dist ./public/dist
+        run: |
+          mv ./dist ./public/dist
+          mv ./public/dist/sw.js ./public/sw.js
 
       - name: Deploy Directories
         run: ls -al

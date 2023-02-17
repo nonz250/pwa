@@ -11,3 +11,4 @@ services:
     volumes:
       - ./frontend/dist:/var/www/app/public/dist:delegated
       - ./frontend/public:/var/www/app/public:delegated
+      - ./frontend/dist/sw.js:/var/www/app/public/sw.js:delegated

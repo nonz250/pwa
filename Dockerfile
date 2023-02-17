@@ -17,4 +17,6 @@ COPY --from=builder ${WORKDIR}/dist ${WORKDIR}/public/dist
 COPY --from=builder ${WORKDIR}/public ${WORKDIR}/public
 COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
+RUN mv ${WORKDIR}/public/dist/sw.js ${WORKDIR}/public/sw.js
+
 EXPOSE 80 443
