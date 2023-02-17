@@ -17,11 +17,7 @@ window.onload = async () => {
     const registration = await navigator
       .serviceWorker
       .register('/dist/sw.js')
-
-    registration.onupdatefound = async () => {
-      console.log('Update service worker.')
-      await registration.update()
-    }
+    await registration.update()
   } catch (error) {
     console.error(error)
   }
