@@ -95,5 +95,6 @@ self.addEventListener('message', event => {
   console.log('message', event)
   if (event.data !== null) {
     void self.registration.showNotification(event.data, NOTIFICATION_BODY)
+    event.ports[0].postMessage(event.data)
   }
 })

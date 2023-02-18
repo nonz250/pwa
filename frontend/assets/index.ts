@@ -29,10 +29,28 @@ window.onload = async () => {
     })
   }
 
+  const sendMessage = (message: string): void => {
+    const channel = new MessageChannel()
+    channel.port1.onmessage = (event) => {
+      console.log('message front.', event)
+      const result = document.getElementById('message-result')
+      if (result !== null) {
+        result.innerText = event.data
+      }
+    }
+    navigator.serviceWorker.controller?.postMessage(message, [channel.port2])
+  }
+
   getCache()
 
   if (!('serviceWorker' in navigator)) {
-    console.error('Service worker is disabled.')
+    console.error('ServiceWorker is disabled.')
+    alert('ServiceWorker is disabled.')
+  }
+
+  if (!('Notification' in window)) {
+    console.error('Notification is disabled.')
+    alert('Notification is disabled.')
   }
 
   try {
@@ -79,10 +97,11 @@ window.onload = async () => {
     })
   })
 
-  document.getElementById('sw-notification')?.addEventListener('click', (event) => {
+  document.getElementById('posting-message-form')?.addEventListener('submit', (event) => {
     event.preventDefault()
     event.stopPropagation()
-    const channel = new MessageChannel()
-    navigator.serviceWorker.controller?.postMessage('Dummy notification.', [channel.port1])
+    const form = event.target as HTMLFormElement
+    const inputValue = form.querySelector('input')?.value
+    sendMessage(inputValue !== undefined ? inputValue : 'Default message.')
   })
 }

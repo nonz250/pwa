@@ -4,12 +4,17 @@
 
 https://pwa.nozomi.bike
 
-このリポジトリは https://github.com/mdn/pwa-examples を参考に、
+このリポジトリは
+* https://github.com/mdn/pwa-examples
+* https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker
+  * https://github.com/GoogleChrome/samples/blob/gh-pages/service-worker/post-message/demo.js
+  
+を参考に、
 
 * typescript ベース
-* 自分なりに解釈し、現実的な実装
+* 自分なりに解釈し現実的な実装
 
-し、
+をし、
 
 * オフライン対応
 * WEB Push 通知対応
