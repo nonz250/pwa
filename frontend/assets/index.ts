@@ -49,11 +49,20 @@ window.onload = async () => {
     event.stopPropagation()
     void Notification.requestPermission().then(result => {
       if (result === 'granted') {
-        const notification = new Notification('Dummy notification.', {
-          body: 'PWA Sample notification.',
-          icon: '/labo-round-icon-192x192.png'
-        })
-        console.log(notification)
+        try {
+          const notification = new Notification('Dummy notification.', {
+            body: 'PWA Sample notification.',
+            icon: '/labo-round-icon-192x192.png'
+          })
+          console.log(notification)
+        } catch (e) {
+          if (e instanceof TypeError) {
+            alert('TypeError: Android版ChromeではNotification発火時にTypeErrorになる現象が確認されています。詳細はページのリンクか引用を御覧ください。')
+          } else {
+            alert('Unknown Error.')
+            console.error(e)
+          }
+        }
       }
     })
   })
