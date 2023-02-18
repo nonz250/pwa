@@ -74,6 +74,8 @@ self.addEventListener('fetch', (event) => {
       return cacheResponse
     }
 
+    await self.registration.showNotification('Fetch server resource', NOTIFICATION_BODY)
+
     console.log('Server resource:', event.request.url)
     const response = await fetch(event.request)
     const cache = await caches.open(CACHE_NAME)
