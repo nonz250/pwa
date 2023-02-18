@@ -7,6 +7,11 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
     <script src="./dist/index.js" async></script>
+    <style>
+        * {
+            word-break: break-word;
+        }
+    </style>
 </head>
 <body>
 <main>
@@ -24,6 +29,12 @@
                 Chrome 49 以降では、 incognito モードでは通知が動作しません。
 
                 Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError を発生させます。サービスワーカーからの通知の作成にのみ対応しています。詳しくは Chromium issue tracker をご覧ください。
+            </blockquote>
+        </div>
+        <p><button id="sw-notification">Android 版 Chrome 用 ダミー ServiceWorker 通知送信</button></p>
+        <div>
+            <blockquote>
+                こっちはフロント → ServiceWorker へイベントの伝播を行い、ServiceWorker 上で通知を表示している。
             </blockquote>
         </div>
         <p><button id="cache-delete">キャッシュ削除</button></p>

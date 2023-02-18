@@ -78,4 +78,11 @@ window.onload = async () => {
       getCache()
     })
   })
+
+  document.getElementById('sw-notification')?.addEventListener('click', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const channel = new MessageChannel()
+    navigator.serviceWorker.controller?.postMessage('test', [channel.port1])
+  })
 }
