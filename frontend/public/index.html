@@ -37,10 +37,9 @@
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes"
                target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes</a>
             <blockquote>
-                Chrome 49 以降では、 incognito モードでは通知が動作しません。
-
-                Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError を発生させます。サービスワーカーからの通知の作成にのみ対応しています。詳しくは
-                Chromium issue tracker をご覧ください。
+                Chrome 49 以降では、 incognito モードでは通知が動作しません。<br />
+                Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError を発生させます。サービスワーカーからの通知の作成にのみ対応しています。<br />
+                詳しくは Chromium issue tracker をご覧ください。
             </blockquote>
         </div>
     </div>
@@ -54,9 +53,9 @@
         </div>
         <div>
             <blockquote>
-                こっちはフロント → ServiceWorker にイベントの伝播を行い、ServiceWorker 上で通知を表示している。
-                Android 版 Chrome 用 ダミー ServiceWorker 通知送信として利用できそう。
-                Posting Messages としてはこちらが一般的で、Notification API と組み合わせている実装。
+                こっちはフロント → ServiceWorker にイベントの伝播を行い、ServiceWorker 上で通知を表示している。<br />
+                Android 版 Chrome 用 ダミー ServiceWorker 通知送信として利用できそう。<br />
+                Posting Messages としてはこちらが一般的で、Notification API と組み合わせている実装。<br />
             </blockquote>
         </div>
         <div>
