@@ -41,6 +41,11 @@ window.onload = async () => {
     navigator.serviceWorker.controller?.postMessage(message, [channel.port2])
   }
 
+  const networkSpan = document.getElementById('network')
+  if (networkSpan !== null) {
+    networkSpan.innerText = navigator.onLine ? 'オンライン' : 'オフライン'
+  }
+
   getCache()
 
   if (!('serviceWorker' in navigator)) {
