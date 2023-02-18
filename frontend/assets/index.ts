@@ -22,15 +22,17 @@ window.onload = async () => {
     console.error(error)
   }
 
-  document.getElementById('notification')?.addEventListener('click', () => {
-    if (Notification.permission !== 'granted') {
-      void Notification.requestPermission()
-      return
-    }
-    const notification = new Notification('Dummy notification.', {
-      body: 'PWA Sample notification.',
-      icon: '/labo-round-icon-192x192.png'
+  document.getElementById('notification')?.addEventListener('click', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    void Notification.requestPermission().then(result => {
+      if (result === 'granted') {
+        const notification = new Notification('Dummy notification.', {
+          body: 'PWA Sample notification.',
+          icon: '/labo-round-icon-192x192.png'
+        })
+        console.log(notification)
+      }
     })
-    console.log(notification)
   })
 }
