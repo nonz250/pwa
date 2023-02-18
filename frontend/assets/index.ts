@@ -29,6 +29,8 @@ window.onload = async () => {
     })
   }
 
+  getCache()
+
   if (!('serviceWorker' in navigator)) {
     console.error('Service worker is disabled.')
   }
@@ -67,6 +69,4 @@ window.onload = async () => {
       getCache()
     })
   })
-
-  getCache()
 }

@@ -6,7 +6,7 @@
     <title>PWA sample.</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
-    <script src="./dist/index.js"></script>
+    <script src="./dist/index.js" async></script>
 </head>
 <body>
 <main>
@@ -17,7 +17,15 @@
                 target="_blank"
                 rel="noreferrer noopener"
         >https://github.com/nonz250/pwa</a></p>
-        <p><button id="notification">通知ON / ダミー通知送信</button></p>
+        <p><button id="notification">通知ON / ダミー通知送信（3秒後に通知）</button></p>
+        <div>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes</a>
+            <blockquote>
+                Chrome 49 以降では、 incognito モードでは通知が動作しません。
+
+                Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError を発生させます。サービスワーカーからの通知の作成にのみ対応しています。詳しくは Chromium issue tracker をご覧ください。
+            </blockquote>
+        </div>
         <p><button id="cache-delete">キャッシュ削除</button></p>
         <div id="cache"></div>
         <p><a href="./sample.html">sample.html</a></p>

@@ -11,7 +11,8 @@ const NOTIFICATION_BODY = {
 }
 
 const CACHE_VERSION = uuid()
-const CACHE_NAME = `pwa-sample-cache-v-${CACHE_VERSION}`
+const CACHE_SERVER_VERSION = 1
+const CACHE_NAME = `pwa-sample-cache-v-${CACHE_SERVER_VERSION}-${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
 }
@@ -25,6 +26,7 @@ self.addEventListener('install', (event) => {
   const addAllCache = async (): Promise<void> => {
     const cache = await caches.open(CACHE_NAME)
     await cache.addAll(MAIN_CACHES)
+    void self.skipWaiting()
   }
   event.waitUntil(addAllCache())
 })
