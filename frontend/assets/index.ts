@@ -83,6 +83,6 @@ window.onload = async () => {
     event.preventDefault()
     event.stopPropagation()
     const channel = new MessageChannel()
-    navigator.serviceWorker.controller?.postMessage('test', [channel.port1])
+    navigator.serviceWorker.controller?.postMessage('Dummy notification.', [channel.port1])
   })
 }
