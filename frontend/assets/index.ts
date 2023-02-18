@@ -9,6 +9,26 @@ console.log(
 )
 
 window.onload = async () => {
+  const getCache = (): void => {
+    const cache = document.getElementById('cache')
+    const children = cache?.children
+    if (children !== null && children !== undefined) {
+      for (let i = 0; i < children.length; i++) {
+        const child = children.item(i)
+        if (child !== null) {
+          cache?.removeChild(child)
+        }
+      }
+    }
+    void caches.keys().then(cacheNames => {
+      cacheNames.forEach(cacheName => {
+        const div = document.createElement('div')
+        div.innerText = cacheName
+        cache?.appendChild(div)
+      })
+    })
+  }
+
   if (!('serviceWorker' in navigator)) {
     console.error('Service worker is disabled.')
   }
@@ -35,4 +55,18 @@ window.onload = async () => {
       }
     })
   })
+
+  document.getElementById('cache-delete')?.addEventListener('click', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    void caches.keys().then(cacheNames => {
+      cacheNames.forEach(cacheName => {
+        void caches.delete(cacheName)
+      })
+    }).then(() => {
+      getCache()
+    })
+  })
+
+  getCache()
 }
