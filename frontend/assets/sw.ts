@@ -1,9 +1,16 @@
+const uuid = (): string => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (a) {
+    const r = (new Date().getTime() + Math.random() * 16) % 16 | 0; const v = a === 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
+}
+
 const NOTIFICATION_BODY = {
   body: 'PWA Sample notification.',
   icon: '/labo-round-icon-192x192.png'
 }
 
-const CACHE_VERSION = 1
+const CACHE_VERSION = uuid()
 const CACHE_NAME = `pwa-sample-cache-v${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
