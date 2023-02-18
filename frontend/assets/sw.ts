@@ -11,7 +11,7 @@ const NOTIFICATION_BODY = {
 }
 
 const CACHE_VERSION = uuid()
-const CACHE_NAME = `pwa-sample-cache-v${CACHE_VERSION}`
+const CACHE_NAME = `pwa-sample-cache-v-${CACHE_VERSION}`
 const CURRENT_CACHES = {
   main: CACHE_NAME
 }
