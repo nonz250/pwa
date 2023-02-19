@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@nonz250" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@nonz250"/>
 
-    <meta property="fb:app_id" content="370746857063202" />
+    <meta property="fb:app_id" content="370746857063202"/>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="PWA Sample Page - nonz250" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="PWA Sample Page - nonz250"/>
 
-    <meta property="og:title" content="PWA Sample Page - nonz250" />
-    <meta property="og:description" content="PWA Sample Page - nonz250" />
-    <meta property="og:url" content="https://pwa.nozomi.bike/" />
-    <meta property="og:image" content="https://pwa.nozomi.bike/nons-labo-pwa-sample-page.png" />
+    <meta property="og:title" content="PWA Sample Page - nonz250"/>
+    <meta property="og:description" content="PWA Sample Page - nonz250"/>
+    <meta property="og:url" content="https://pwa.nozomi.bike/"/>
+    <meta property="og:image" content="https://pwa.nozomi.bike/nons-labo-pwa-sample-page.png"/>
     <meta property="og:image:alt" content="PWA Sample Page - nonz250">
 
     <title>PWA sample.</title>
@@ -52,8 +52,9 @@
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes"
                target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification#chrome_notes</a>
             <blockquote>
-                Chrome 49 以降では、 incognito モードでは通知が動作しません。<br />
-                Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError を発生させます。サービスワーカーからの通知の作成にのみ対応しています。<br />
+                Chrome 49 以降では、 incognito モードでは通知が動作しません。<br/>
+                Android 版 Chrome は Notification コンストラクターを呼び出すと TypeError
+                を発生させます。サービスワーカーからの通知の作成にのみ対応しています。<br/>
                 詳しくは Chromium issue tracker をご覧ください。
             </blockquote>
         </div>
@@ -65,12 +66,17 @@
                 <label><input type="text" value="Dummy Posting Messages."/></label>
                 <button>Dummy Posting Messages.</button>
             </form>
+            <form id="posting-message-form-delay">
+                <label><input type="text" value="Dummy Delay Posting Messages."/></label>
+                <button>Dummy Delay Posting Messages. After 3 sec.</button>
+            </form>
         </div>
         <div>
             <blockquote>
-                こっちはフロント → ServiceWorker にイベントの伝播を行い、ServiceWorker 上で通知を表示している。<br />
-                Android 版 Chrome 用 ダミー ServiceWorker 通知送信として利用できそう。<br />
-                Posting Messages としてはこちらが一般的で、Notification API と組み合わせている実装。<br />
+                こっちはフロント → ServiceWorker にイベントの伝播を行い、ServiceWorker 上で通知を表示している。<br/>
+                Android 版 Chrome 用 ダミー ServiceWorker 通知送信として利用できそう。<br/>
+                Posting Messages としてはこちらが一般的で、Notification API と組み合わせている実装。<br/>
+                3 秒後に通知される方はホーム画面に戻ったりしたときの挙動を見る。<br/>
             </blockquote>
         </div>
         <div>

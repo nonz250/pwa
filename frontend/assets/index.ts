@@ -109,4 +109,14 @@ window.onload = async () => {
     const inputValue = form.querySelector('input')?.value
     sendMessage(inputValue !== undefined ? inputValue : 'Default message.')
   })
+
+  document.getElementById('posting-message-form-delay')?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const form = event.target as HTMLFormElement
+    const inputValue = form.querySelector('input')?.value
+    setTimeout(() => {
+      sendMessage(inputValue !== undefined ? inputValue : 'Default message.')
+    }, 3000)
+  })
 }
