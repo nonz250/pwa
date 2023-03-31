@@ -8,6 +8,17 @@ console.log(
   'padding: 0.2rem 0; border-radius: 5px; font-weight: 700; font-size: 0.8rem;'
 )
 
+type BeforeInstallPromptEvent = Event & {
+  userChoice: any
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  prompt: Function
+}
+
+interface ChoiceResult {
+  outcome: string
+  platform: string
+}
+
 window.onload = async () => {
   const getCache = (): void => {
     const cache = document.getElementById('cache')
@@ -118,5 +129,34 @@ window.onload = async () => {
     setTimeout(() => {
       sendMessage(inputValue !== undefined ? inputValue : 'Default message.')
     }, 3000)
+  })
+
+  let deferredPrompt: BeforeInstallPromptEvent | null
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    const installBtn = document.getElementById('install-btn')
+    if (installBtn === null) {
+      alert('Install btn not exists.')
+      return
+    }
+    event.preventDefault()
+    deferredPrompt = event as BeforeInstallPromptEvent
+    installBtn.style.display = 'block'
+    installBtn.addEventListener('click', (event) => {
+      installBtn.style.display = 'none'
+      deferredPrompt?.prompt()
+      deferredPrompt?.userChoice.then((choiceResult: ChoiceResult) => {
+        console.log(choiceResult)
+        if (choiceResult.outcome === 'accepted') {
+          sendMessage('Install PWA sample app.')
+        } else {
+          const result = document.getElementById('message-result')
+          if (result !== null) {
+            result.innerText = 'User dismissed the A2HS prompt'
+          }
+        }
+        deferredPrompt = null
+      })
+    })
   })
 }
