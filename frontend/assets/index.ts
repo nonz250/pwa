@@ -11,7 +11,7 @@ console.log(
 type BeforeInstallPromptEvent = Event & {
   userChoice: any
   // eslint-disable-next-line @typescript-eslint/ban-types
-  prompt: Function
+  prompt: any
 }
 
 interface ChoiceResult {
@@ -142,7 +142,7 @@ window.onload = async () => {
     event.preventDefault()
     deferredPrompt = event as BeforeInstallPromptEvent
     installBtn.style.display = 'block'
-    installBtn.addEventListener('click', (event) => {
+    installBtn.addEventListener('click', () => {
       installBtn.style.display = 'none'
       deferredPrompt?.prompt()
       deferredPrompt?.userChoice.then((choiceResult: ChoiceResult) => {
