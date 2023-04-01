@@ -9,17 +9,17 @@
   "display_override": ["fullscreen", "minimal-ui"],
   "icons": [
     {
-      "src": "labo-round-icon-48x48.png",
+      "src": "labo-icon-48x48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "labo-round-icon-96x96.png",
+      "src": "labo-icon-96x96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "labo-round-icon-192x192.png",
+      "src": "labo-icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
