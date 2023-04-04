@@ -86,7 +86,7 @@ window.onload = async () => {
         try {
           const notification = new Notification('Dummy notification.', {
             body: 'PWA Sample notification.',
-            icon: '/labo-round-icon-192x192.png'
+            icon: '/labo-icon-192x192.png'
           })
           console.log(notification)
         } catch (e) {

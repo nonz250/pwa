@@ -7,7 +7,7 @@ const uuid = (): string => {
 
 const NOTIFICATION_BODY = {
   body: 'PWA Sample notification.',
-  icon: '/labo-round-icon-192x192.png'
+  icon: '/labo-icon-192x192.png'
 }
 
 const CACHE_VERSION = uuid()
